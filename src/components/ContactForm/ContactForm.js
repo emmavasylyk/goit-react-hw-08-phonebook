@@ -16,6 +16,7 @@ export default function ContactForm() {
     useCreateContactMutation();
   const { data: contacts, isLoading: loadingContacts } =
     useFetchContactsQuery();
+  console.log('contacts', contacts);
 
   const hundleChange = e => {
     const { name, value } = e.currentTarget;
@@ -58,8 +59,10 @@ export default function ContactForm() {
     if (isContactNumberInArray) {
       return toastError(phone);
     }
+    console.log('contactContent', contactContent);
 
     createContact(contactContent);
+
     toast.success('🦄 Ваш контакт успешно добавлен!', {
       position: 'top-right',
       autoClose: 5000,

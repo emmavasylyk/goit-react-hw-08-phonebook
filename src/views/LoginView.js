@@ -15,11 +15,11 @@ const styles = {
 };
 
 export default function LoginView() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [logIn] = useLoginUserMutation();
-  console.log('LogIn', logIn);
+  // console.log('LogIn', logIn);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {

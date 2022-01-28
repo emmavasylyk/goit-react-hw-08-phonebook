@@ -20,6 +20,7 @@ const styles = {
 
 export default function UserMenu() {
   const name = useSelector(getUserName);
+  console.log('name', name);
   const avatar = defaultAvatar;
   const [logoutUser] = useLogoutUserMutation();
 

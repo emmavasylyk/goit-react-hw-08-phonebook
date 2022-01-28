@@ -20,11 +20,7 @@ const Navigation = () => (
       Главная
     </NavLink>
 
-    <NavLink
-      to="/contacts"
-      style={styles.link}
-      //   activeStyle={styles.activeLink}
-    >
+    <NavLink to="/contacts" style={styles.link}>
       Контакты
     </NavLink>
   </nav>

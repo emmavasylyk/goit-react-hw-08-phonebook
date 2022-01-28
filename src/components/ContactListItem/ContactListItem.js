@@ -7,6 +7,7 @@ import s from './ContactListItem.module.css';
 import { useState } from 'react';
 
 export const ContactListItem = ({ id, name, phone }) => {
+  console.log('name', name);
   const [change, setChange] = useState(false);
   const [contactName, setContactName] = useState(name);
   const [contactPhone, setContactPhone] = useState(phone);
@@ -20,7 +21,6 @@ export const ContactListItem = ({ id, name, phone }) => {
     });
     setChange(false);
   };
-
   return (
     <li className={s.Item}>
       <p className={s.ContactList}></p>
