@@ -19,24 +19,24 @@ export default function AppBar() {
   // console.log('isLoggedIn', isLoggedIn);
 
   const token = useSelector(getToken);
-  console.log('token', token);
+  // console.log('token', token);
 
   const { isLoading } = useFetchCurrentUserQuery(token, {
     skip: token === null || isLoggedIn,
   });
 
   return (
-    // <>
-    //   {!isLoading ? (
-    //     <h1>Показываем React Skeleton</h1>
-    //   ) : (
     <>
-      <header style={styles.header}>
-        <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      </header>
+      {!isLoading && (
+        //   <h1>Показываем React Skeleton</h1>
+        // ) : (
+        // <>
+        <header style={styles.header}>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </header>
+        // </>
+      )}
     </>
-    //   )}
-    // </>
   );
 }

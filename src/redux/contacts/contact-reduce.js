@@ -13,11 +13,11 @@ export const contactApi = createApi({
       return headers;
     },
   }),
-  keepUnusedDataFor: 0,
   tagTypes: ['Contact'],
   endpoints: builder => ({
     fetchContacts: builder.query({
       query: () => '/contacts',
+      keepUnusedDataFor: 0,
       providesTags: ['Contact'],
     }),
     deleteContact: builder.mutation({
@@ -36,11 +36,13 @@ export const contactApi = createApi({
       invalidatesTags: ['Contact'],
     }),
     editContact: builder.mutation({
-      query: ({ changeContact, contactId }) => ({
-        url: `/contacts/${contactId}`,
-        method: 'PATCH',
-        body: changeContact,
-      }),
+      query: ({ changeContact, contactId }) => {
+        return {
+          url: `/contacts/${contactId}`,
+          method: 'PATCH',
+          body: changeContact,
+        };
+      },
       invalidatesTags: ['Contact'],
     }),
   }),

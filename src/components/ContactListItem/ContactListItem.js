@@ -16,7 +16,7 @@ export const ContactListItem = ({ id, name, phone }) => {
 
   const editHandler = () => {
     editContact({
-      changedContact: { name: contactName, number: contactPhone },
+      changedContact: { name: contactName, phone: contactPhone },
       id,
     });
     setChange(false);

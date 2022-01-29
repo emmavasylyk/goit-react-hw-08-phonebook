@@ -44,17 +44,16 @@ export default function ContactForm() {
 
     const contactContent = {
       name,
-      phone,
-      // userState,
+      number: phone,
     };
 
     const isContactNameInArray = contacts.find(
       contact =>
-        contact.name.toLowerCase() === contactContent.name.toLowerCase(),
+        contact.name.toLowerCase() === contactContent.number.toLowerCase(),
     );
 
     const isContactNumberInArray = contacts.find(
-      contact => contact.phone === contactContent.phone,
+      contact => contact.phone === contactContent.number,
     );
 
     if (isContactNameInArray) {

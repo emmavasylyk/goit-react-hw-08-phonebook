@@ -39,12 +39,12 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       },
     );
-    builder.addMatcher(
-      authApi.endpoints.fetchCurrentUser.matchPending,
-      state => {
-        state.isFetchingCurrentUser = true;
-      },
-    );
+    // builder.addMatcher(
+    //   authApi.endpoints.fetchCurrentUser.matchPending,
+    //   state => {
+    //     state.isFetchingCurrentUser = true;
+    //   },
+    // );
 
     builder.addMatcher(
       authApi.endpoints.fetchCurrentUser.matchFulfilled,
@@ -53,12 +53,12 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       },
     );
-    builder.addMatcher(
-      authApi.endpoints.fetchCurrentUser.matchRejected,
-      state => {
-        state.isFetchingCurrentUser = false;
-      },
-    );
+    // builder.addMatcher(
+    //   authApi.endpoints.fetchCurrentUser.matchRejected,
+    //   state => {
+    //     state.isFetchingCurrentUser = false;
+    //   },
+    // );
   },
 });
 

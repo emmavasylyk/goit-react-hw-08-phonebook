@@ -5,14 +5,14 @@ import { useFetchContactsQuery } from '../../redux/contacts';
 
 const ContactList = () => {
   const filter = useSelector(getFilter);
-  const { data: contacts } = useFetchContactsQuery();
+  const { data } = useFetchContactsQuery();
   // console.log('contacts', contacts);
   const getfilteredContacts = contacts =>
     contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase()),
     );
 
-  const contactFilterList = contacts ? getfilteredContacts(contacts) : null;
+  const contactFilterList = data ? getfilteredContacts(data) : null;
 
   return (
     <>

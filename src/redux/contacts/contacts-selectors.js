@@ -1,6 +1,6 @@
 export const getContacts = state => {
   // console.log('getContacts', state.contact.entities);
-  return state.contacts.items;
+  return state.contact.entities;
 };
 export const getFilter = state => state.filter;
 
