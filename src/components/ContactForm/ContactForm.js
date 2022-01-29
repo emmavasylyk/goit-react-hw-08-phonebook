@@ -8,15 +8,19 @@ import { toast } from 'react-toastify';
 import s from './ContactForm.module.css';
 import { ImUserPlus } from 'react-icons/im';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { getToken } from '../../redux/auth/auth-selectors';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
-  const [createContact, { isLoading, isError, isSuccess }] =
-    useCreateContactMutation();
-  const { data: contacts, isLoading: loadingContacts } =
-    useFetchContactsQuery();
+  const [createContact] = useCreateContactMutation();
+  const { data: contacts } = useFetchContactsQuery();
+  // const userState = useSelector(state => state.auth.token);
+  // console.log('userState', userState);
   console.log('contacts', contacts);
+  const token = useSelector(getToken);
+  console.log('token', token);
 
   const hundleChange = e => {
     const { name, value } = e.currentTarget;
@@ -41,6 +45,7 @@ export default function ContactForm() {
     const contactContent = {
       name,
       phone,
+      // userState,
     };
 
     const isContactNameInArray = contacts.find(
@@ -59,6 +64,7 @@ export default function ContactForm() {
     if (isContactNumberInArray) {
       return toastError(phone);
     }
+
     console.log('contactContent', contactContent);
 
     createContact(contactContent);

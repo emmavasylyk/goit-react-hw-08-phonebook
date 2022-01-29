@@ -1,5 +1,5 @@
 export const getContacts = state => {
-  console.log('getContacts', state.contact.entities);
+  // console.log('getContacts', state.contact.entities);
   return state.contacts.items;
 };
 export const getFilter = state => state.filter;

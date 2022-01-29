@@ -40,7 +40,7 @@ const NotFoundView = lazy(() =>
 export default function App() {
   const dispatch = useDispatch();
   const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
-  console.log('isFetchingCurrentUser', isFetchingCurrentUser);
+  // console.log('isFetchingCurrentUser', isFetchingCurrentUser);
   // const [fetchCurrentUser] = useFetchCurrentUserQuery;
   // console.log('fetchCurrentUser', fetchCurrentUser);
 
@@ -50,50 +50,50 @@ export default function App() {
 
   return (
     <Container>
-      {isFetchingCurrentUser ? (
+      {/* {isFetchingCurrentUser ? (
         <h1>Показываем React Skeleton</h1>
-      ) : (
-        <>
-          <AppBar />
-          <Suspense fallback={<p>Загружаем...</p>}>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <PublicRoute redirectTo="/contacts" restricted>
-                    <HomeView />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="register"
-                element={
-                  <PublicRoute redirectTo="/contacts" restricted>
-                    <RegisterView />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="login"
-                element={
-                  <PublicRoute redirectTo="/contacts" restricted>
-                    <LoginView />
-                  </PublicRoute>
-                }
-              />
-              <Route
-                path="contacts"
-                element={
-                  <PrivateRoute redirectTo="/">
-                    <ContactsView />
-                  </PrivateRoute>
-                }
-              />
-              <Route path="*" element={<NotFoundView />} />
-            </Routes>
-          </Suspense>
-        </>
-      )}
+      ) : ( */}
+      <>
+        <AppBar />
+        <Suspense fallback={<p>Загружаем...</p>}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <PublicRoute redirectTo="/contacts" restricted>
+                  <HomeView />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="register"
+              element={
+                <PublicRoute redirectTo="/contacts" restricted>
+                  <RegisterView />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="login"
+              element={
+                <PublicRoute redirectTo="/contacts" restricted>
+                  <LoginView />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="contacts"
+              element={
+                <PrivateRoute redirectTo="/">
+                  <ContactsView />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFoundView />} />
+          </Routes>
+        </Suspense>
+      </>
+      {/* )} */}
     </Container>
   );
 }
