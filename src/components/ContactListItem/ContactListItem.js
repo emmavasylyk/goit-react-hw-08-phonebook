@@ -3,39 +3,95 @@ import {
   useEditContactMutation,
 } from '../../redux/contacts';
 import { ImBin } from 'react-icons/im';
+import { ImPencil } from 'react-icons/im';
+import { ImSpinner3 } from 'react-icons/im';
+import { ImCheckmark } from 'react-icons/im';
+
+// ImCheckmark;
 import s from './ContactListItem.module.css';
 import { useState } from 'react';
 
-export const ContactListItem = ({ id, name, phone }) => {
-  console.log('name', name);
+export const ContactListItem = ({ id, name, number }) => {
+  console.log('id', id);
   const [change, setChange] = useState(false);
   const [contactName, setContactName] = useState(name);
-  const [contactPhone, setContactPhone] = useState(phone);
+  const [contactNumber, setContactNumber] = useState(number);
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const [editContact, { isLoading: isEditing }] = useEditContactMutation();
 
   const editHandler = () => {
     editContact({
-      changedContact: { name: contactName, phone: contactPhone },
-      id,
+      changeContact: { name: contactName, number: contactNumber },
+      contactId: id,
     });
     setChange(false);
   };
   return (
-    <li className={s.Item}>
-      <p className={s.ContactList}></p>
-      {name}: {phone}{' '}
-      <button type="button" className={s.Button} onClick={() => editHandler()}>
-        Edit
-      </button>
-      <button
-        onClick={() => deleteContact(id)}
-        disabled={isDeleting}
-        className={s.Button}
-      >
-        <ImBin className={s.ButtonIcon} />
-        Delete
-      </button>
-    </li>
+    <>
+      <li className={s.Item}>
+        {!change ? (
+          <>
+            <p className={s.ContactList}></p>
+            {name}: {number}{' '}
+            <button
+              className={s.Button}
+              type="button"
+              onClick={() => setChange(true)}
+            >
+              {isEditing ? (
+                <ImSpinner3 className={s.ButtonIcon} />
+              ) : (
+                <ImPencil className={s.ButtonIcon} />
+              )}
+              Edit
+            </button>
+          </>
+        ) : (
+          <>
+            <input
+              className={s.Input}
+              name="name"
+              value={contactName}
+              onChange={e => {
+                console.log('event', e.target.value);
+                return setContactName(e.target.value);
+              }}
+            />
+            <input
+              className={s.Input}
+              type="tel"
+              name="phone"
+              value={contactNumber}
+              autoFocus
+              onChange={e => {
+                console.log('event', e.target.value);
+                return setContactNumber(e.target.value);
+              }}
+            />
+            <button
+              className={s.ButtonDone}
+              type="button"
+              onClick={() => editHandler()}
+            >
+              <ImCheckmark className={s.ButtonIcon} />
+              Done
+            </button>
+          </>
+        )}
+        <button
+          onClick={() => deleteContact(id)}
+          disabled={isDeleting}
+          className={s.Button}
+          type="button"
+        >
+          {isDeleting ? (
+            <ImSpinner3 className={s.ButtonIcon} />
+          ) : (
+            <ImBin className={s.ButtonIcon} />
+          )}
+          Delete
+        </button>
+      </li>
+    </>
   );
 };

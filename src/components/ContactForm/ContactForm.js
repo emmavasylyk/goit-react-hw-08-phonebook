@@ -8,19 +8,18 @@ import { toast } from 'react-toastify';
 import s from './ContactForm.module.css';
 import { ImUserPlus } from 'react-icons/im';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { getToken } from '../../redux/auth/auth-selectors';
+// import { useSelector } from 'react-redux';
+// import { getToken } from '../../redux/auth/auth-selectors';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const [createContact] = useCreateContactMutation();
   const { data: contacts } = useFetchContactsQuery();
-  // const userState = useSelector(state => state.auth.token);
-  // console.log('userState', userState);
+
   console.log('contacts', contacts);
-  const token = useSelector(getToken);
-  console.log('token', token);
+  // const token = useSelector(getToken);
+  // console.log('token', token);
 
   const hundleChange = e => {
     const { name, value } = e.currentTarget;
@@ -31,7 +30,7 @@ export default function ContactForm() {
         break;
 
       case 'phone':
-        setPhone(value);
+        setNumber(value);
         break;
 
       default:
@@ -44,16 +43,16 @@ export default function ContactForm() {
 
     const contactContent = {
       name,
-      number: phone,
+      number: number,
     };
 
     const isContactNameInArray = contacts.find(
       contact =>
-        contact.name.toLowerCase() === contactContent.number.toLowerCase(),
+        contact.name.toLowerCase() === contactContent.name.toLowerCase(),
     );
 
     const isContactNumberInArray = contacts.find(
-      contact => contact.phone === contactContent.number,
+      contact => contact.number === contactContent.number,
     );
 
     if (isContactNameInArray) {
@@ -61,10 +60,10 @@ export default function ContactForm() {
     }
 
     if (isContactNumberInArray) {
-      return toastError(phone);
+      return toastError(number);
     }
 
-    console.log('contactContent', contactContent);
+    // console.log('contactContent', contactContent);
 
     createContact(contactContent);
 
@@ -82,7 +81,7 @@ export default function ContactForm() {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -108,7 +107,7 @@ export default function ContactForm() {
           placeholder="111-11-11"
           type="tel"
           name="phone"
-          value={phone}
+          value={number}
           onChange={hundleChange}
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
