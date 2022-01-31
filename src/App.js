@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
 // import { Loader } from 'react-loader-spinner';
 // import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import 'modern-normalize/modern-normalize.css';
@@ -11,24 +12,17 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import { authSelectors } from './redux/auth';
 import { useFetchCurrentUserQuery } from './redux/auth';
-// import ContactForm from './components/ContactForm';
-// import ContactList from './components/ContactList';
-// import Filter from './components/Filter';
-// import { ToastContainer } from 'react-toastify';
-// import HomeView from './views/HomeView';
-// import RegisterView from './views/RegisterView';
-// import LoginView from './views/LoginView';
-// import ContactsView from './views/ContactsView';
-// import NotFoundView from './views/NotFoundView';
+import { getIsLoggedIn } from './redux/auth/auth-selectors';
+// import ErrorMessage from './components/Error/ErrorMessages';
 
 const HomeView = lazy(() =>
-  import('./views/HomeView.js' /* webpackChunkName: "home-page" */),
+  import('./views/HomeView' /* webpackChunkName: "home-page" */),
 );
 const RegisterView = lazy(() =>
-  import('./views/RegisterView.js' /* webpackChunkName: "register-page" */),
+  import('./views/RegisterView' /* webpackChunkName: "register-page" */),
 );
 const LoginView = lazy(() =>
-  import('./views/LoginView.js' /* webpackChunkName: "login-page" */),
+  import('./views/LoginView' /* webpackChunkName: "login-page" */),
 );
 const ContactsView = lazy(() =>
   import('./views/ContactsView.js' /* webpackChunkName: "contacts-page" */),
@@ -38,8 +32,30 @@ const NotFoundView = lazy(() =>
 );
 
 export default function App() {
-  const dispatch = useDispatch();
-  const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
+  // const dispatch = useDispatch();
+  // const [error, setError] = useState(null);
+  // const { error } = useFetchCurrentUserQuery();
+  // console.log('error5555555', errorFetch);
+  // setError(errorFetch);
+  // console.log('errorFetch', error);
+  // console.log('Error', Error);
+  // const isLoggedIn = useSelector(getUserStatus);
+  const isLoggedIn = useSelector(getIsLoggedIn);
+
+  // const message = JSON.stringify(error.data);
+  // console.log('error!!!!!!!!', message);
+  // ErrorMessage(message);
+
+  // useEffect(() => {
+  //   if (error) {
+  //     console.log('error!!!!!!!!', error.data);
+  //     dispatch(ErrorMessage(error.data));
+  //     // onError(error.data);
+  //   }
+  // }, [error]);
+
+  // const dispatch = useDispatch();
+  // const isFetchingCurrentUser = useSelector(authSelectors.getIsFetchingCurrent);
   // console.log('isFetchingCurrentUser', isFetchingCurrentUser);
   // const [fetchCurrentUser] = useFetchCurrentUserQuery;
   // console.log('fetchCurrentUser', fetchCurrentUser);
@@ -50,9 +66,6 @@ export default function App() {
 
   return (
     <Container>
-      {/* {isFetchingCurrentUser ? (
-        <h1>Показываем React Skeleton</h1>
-      ) : ( */}
       <>
         <AppBar />
         <Suspense fallback={<p>Загружаем...</p>}>
@@ -89,11 +102,14 @@ export default function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="*" element={<NotFoundView />} />
+            <Route
+              path="*"
+              element={isLoggedIn ? <ContactsView /> : <HomeView />}
+            />
           </Routes>
         </Suspense>
+        <ToastContainer theme={'colored'} />
       </>
-      {/* )} */}
     </Container>
   );
 }

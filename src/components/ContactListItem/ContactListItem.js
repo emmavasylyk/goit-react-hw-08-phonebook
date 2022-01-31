@@ -31,10 +31,11 @@ export const ContactListItem = ({ id, name, number }) => {
       <li className={s.Item}>
         {!change ? (
           <>
-            <p className={s.ContactList}></p>
-            {name}: {number}{' '}
+            <span className={s.ContactList}>
+              {name}: {number}{' '}
+            </span>
             <button
-              className={s.Button}
+              className={s.ButtonEdit}
               type="button"
               onClick={() => setChange(true)}
             >

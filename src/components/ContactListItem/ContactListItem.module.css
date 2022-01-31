@@ -4,7 +4,7 @@
   margin-right: 5px;
   width: 100%;
   margin-top: 5px;
-  padding: 5px 10px;
+  padding: 10px 10px;
   border-radius: 5px;
   border: 1px solid gray;
 }
@@ -28,11 +28,13 @@
 .Button {
   display: flex;
   align-items: center;
-  padding: 9px 15px;
+  font-style: 18px;
+  padding: 12px 15px;
   border-radius: 5px;
   border: 1px solid #3c3c3c;
   background: #e14444;
   color: white;
+  cursor: pointer;
 }
 
 .Button:hover,
@@ -43,16 +45,44 @@
     0 2px 33.4px rgb(0 0 0 / 9%), 0 2px 80px rgb(0 0 0 / 12%);
 }
 .ContactList {
-  font-weight: 500;
+  width: 350px;
+  font-size: 20px;
 }
 .ButtonDone {
   display: flex;
   align-items: center;
-  padding: 9px 15px;
+  font-size: 18px;
+  padding: 12px 15px;
   border-radius: 5px;
   border: 1px solid #3c3c3c;
-  background: #e14444;
+  background: #4d9256;
   color: white;
   margin: 0px 10px;
-  /* margin-right: 10px; */
+  cursor: pointer;
+}
+.ButtonDone:hover,
+.ButtonDone:focus {
+  background: #2f6836;
+  box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 2px 5.3px rgb(0 0 0 / 5%),
+    0 2px 10px rgb(0 0 0 / 6%), 0 2px 17.9px rgb(0 0 0 / 7%),
+    0 2px 33.4px rgb(0 0 0 / 9%), 0 2px 80px rgb(0 0 0 / 12%);
+}
+.ButtonEdit {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 12px 15px;
+  border-radius: 5px;
+  border: 1px solid #3c3c3c;
+  background: #e8e339;
+  color: #000;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+.ButtonEdit:hover,
+.ButtonEdit:focus {
+  background: #bbb849;
+  box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 2px 5.3px rgb(0 0 0 / 5%),
+    0 2px 10px rgb(0 0 0 / 6%), 0 2px 17.9px rgb(0 0 0 / 7%),
+    0 2px 33.4px rgb(0 0 0 / 9%), 0 2px 80px rgb(0 0 0 / 12%);
 }

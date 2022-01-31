@@ -1,25 +1,15 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLoginUserMutation } from '../redux/auth';
-// import { authSelectors } from '../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { useLoginUserMutation } from '../../redux/auth';
+import { ImEnter } from 'react-icons/im';
+import s from './LoginView.module.css';
+// ImEnter;
 
 export default function LoginView() {
-  // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [logIn] = useLoginUserMutation();
-  // console.log('LogIn', logIn);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -35,19 +25,18 @@ export default function LoginView() {
   const handleSubmit = e => {
     e.preventDefault();
     logIn({ email, password });
-    // dispatch(LogIn({ email, password }));
     setEmail('');
     setPassword('');
   };
 
   return (
     <div>
-      <h1>Страница логина</h1>
-
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Почта
+      <h1 className={s.Title}>Login</h1>
+      <form onSubmit={handleSubmit} className={s.Form} autoComplete="off">
+        <label className={s.Label}>
+          E-mail
           <input
+            className={s.Input}
             type="email"
             name="email"
             value={email}
@@ -55,9 +44,10 @@ export default function LoginView() {
           />
         </label>
 
-        <label style={styles.label}>
-          Пароль
+        <label className={s.Label}>
+          Password
           <input
+            className={s.Input}
             type="password"
             name="password"
             value={password}
@@ -65,8 +55,18 @@ export default function LoginView() {
           />
         </label>
 
-        <button type="submit">Войти</button>
+        <button className={s.Button} type="submit">
+          <ImEnter className={s.ButtonIcon} />
+          Login
+        </button>
       </form>
+      <p className={s.Text}>
+        If you don`t have an account, please{' '}
+        <Link to="/register" className={s.TextLink}>
+          register
+        </Link>
+        !
+      </p>
     </div>
   );
 }

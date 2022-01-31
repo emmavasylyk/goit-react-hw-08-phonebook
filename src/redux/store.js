@@ -16,6 +16,7 @@ import { contactApi } from './contacts/contact-reduce';
 import { authApi } from './auth';
 import { authSlice } from './auth';
 import storage from 'redux-persist/lib/storage';
+// import Error from './error/ErrorMiddleware';
 
 const authPersistConfig = {
   key: 'auth',
@@ -39,6 +40,7 @@ export const store = configureStore({
     }),
     contactApi.middleware,
     authApi.middleware,
+    // Error,
   ],
 });
 export const persistor = persistStore(store);

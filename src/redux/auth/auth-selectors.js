@@ -6,8 +6,6 @@ const getIsFetchingCurrent = state => state.auth.isFetchingCurrentUser;
 
 export const getToken = state => state.auth.token;
 
-// console.log('getToken', getToken);
-
 const authSelectors = {
   getIsLoggedIn,
   getUserName,

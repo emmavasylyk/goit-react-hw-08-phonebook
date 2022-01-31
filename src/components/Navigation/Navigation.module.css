@@ -1,0 +1,10 @@
+.Link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+.Nav {
+  font-size: 18px;
+}

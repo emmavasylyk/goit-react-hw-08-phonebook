@@ -1,29 +1,45 @@
-.LableName {
-  display: block;
+.Title {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.Form {
+  margin: 0 auto;
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+.Label {
+  display: block;
   font-size: 18px;
   font-weight: 600;
 }
-.InputForm {
+
+.Label:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.Input {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 32%;
+  width: 100%;
   margin-top: 15px;
   padding: 10px 10px;
   border-radius: 5px;
   border: 1px solid gray;
 }
-.InputForm:focus {
+
+.Input:focus {
   outline: 1px solid #3c3c3c;
 }
-.ButtonContactForm {
+
+.Button {
   display: flex;
   align-items: center;
-  font-size: 18px;
+  font-size: 22px;
   padding: 15px 15px;
-  margin-bottom: 20px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 5px;
@@ -32,13 +48,22 @@
   color: white;
   cursor: pointer;
 }
-.ButtonContactForm:hover,
-.ButtonContactForm:focus {
+
+.Button:hover,
+.Button:focus {
   background: #2f6836;
   box-shadow: 0 2.8px 2.2px rgb(0 0 0 / 3%), 0 2px 5.3px rgb(0 0 0 / 5%),
     0 2px 10px rgb(0 0 0 / 6%), 0 2px 17.9px rgb(0 0 0 / 7%),
     0 2px 33.4px rgb(0 0 0 / 9%), 0 2px 80px rgb(0 0 0 / 12%);
 }
-.ButtonContactFormIcon {
+
+.ButtonIcon {
   margin-right: 5px;
+}
+.Text {
+  font-size: 18px;
+  text-align: center;
+}
+.TextLink {
+  font-weight: 700;
 }

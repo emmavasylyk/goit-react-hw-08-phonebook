@@ -67,7 +67,7 @@ export default function ContactForm() {
 
     createContact(contactContent);
 
-    toast.success('🦄 Ваш контакт успешно добавлен!', {
+    toast.success('Your contact has been successfully added!', {
       position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,

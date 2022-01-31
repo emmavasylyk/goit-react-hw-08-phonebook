@@ -1,26 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { authSelectors } from '../redux/auth';
-import { useRegisterUserMutation } from '../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import { authSelectors } from '../../redux/auth';
+import { useRegisterUserMutation } from '../../redux/auth';
+import { ImEnter } from 'react-icons/im';
+import s from './RegisterView.module.css';
 
 export default function RegisterView() {
-  //   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [register] = useRegisterUserMutation();
-  //   console.log('register', register);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -38,7 +28,6 @@ export default function RegisterView() {
   const handleSubmit = e => {
     e.preventDefault();
     register({ name, email, password });
-    // dispatch(authSelectors.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
@@ -46,17 +35,24 @@ export default function RegisterView() {
 
   return (
     <div>
-      <h1>Страница регистрации</h1>
+      <h1 className={s.Title}>Register</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
-          Имя
-          <input type="text" name="name" value={name} onChange={handleChange} />
+      <form onSubmit={handleSubmit} className={s.Form} autoComplete="off">
+        <label className={s.Label}>
+          Name
+          <input
+            className={s.Input}
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+          />
         </label>
 
-        <label style={styles.label}>
-          Почта
+        <label className={s.Label}>
+          E-mail
           <input
+            className={s.Input}
             type="email"
             name="email"
             value={email}
@@ -64,9 +60,10 @@ export default function RegisterView() {
           />
         </label>
 
-        <label style={styles.label}>
-          Пароль
+        <label className={s.Label}>
+          Password
           <input
+            className={s.Input}
             type="password"
             name="password"
             value={password}
@@ -74,8 +71,17 @@ export default function RegisterView() {
           />
         </label>
 
-        <button type="submit">Зарегистрироваться</button>
+        <button className={s.Button} type="submit">
+          <ImEnter className={s.ButtonIcon} />
+          Register
+        </button>
       </form>
+      <p className={s.Text}>
+        Already have an account?{' '}
+        <Link to="/login" className={s.TextLink}>
+          Login
+        </Link>
+      </p>
     </div>
   );
 }

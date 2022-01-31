@@ -1,8 +1,6 @@
-// import Container from '../components/Container';
 import ContactForm from '../components/ContactForm';
 import ContactList from '../components/ContactList';
 import Filter from '../components/Filter';
-import { ToastContainer } from 'react-toastify';
 
 const Title = ['Title'];
 
@@ -14,7 +12,6 @@ export default function ContactsView() {
       <h2 className={Title}>Contacts</h2>
       <Filter />
       {<ContactList />}
-      <ToastContainer theme={'colored'} />
     </>
   );
 }
