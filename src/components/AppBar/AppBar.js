@@ -18,14 +18,10 @@ export default function AppBar() {
   return (
     <>
       {!isLoading && (
-        //   <h1>Показываем React Skeleton</h1>
-        // ) : (
-        // <>
         <header className={s.Header}>
           <Navigation />
           {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </header>
-        // </>
       )}
     </>
   );

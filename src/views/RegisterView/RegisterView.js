@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { authSelectors } from '../../redux/auth';
 import { useRegisterUserMutation } from '../../redux/auth';
 import { ImEnter } from 'react-icons/im';
 import s from './RegisterView.module.css';

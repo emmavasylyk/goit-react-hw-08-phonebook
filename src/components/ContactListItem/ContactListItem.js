@@ -51,7 +51,6 @@ export const ContactListItem = ({ id, name, number }) => {
               name="name"
               value={contactName}
               onChange={e => {
-                console.log('event', e.target.value);
                 return setContactName(e.target.value);
               }}
             />
@@ -62,7 +61,6 @@ export const ContactListItem = ({ id, name, number }) => {
               value={contactNumber}
               autoFocus
               onChange={e => {
-                console.log('event', e.target.value);
                 return setContactNumber(e.target.value);
               }}
             />
