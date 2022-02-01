@@ -24,7 +24,6 @@ export const authApi = createApi({
           body: newUser,
         })
           .then(response => {
-            console.log('response', response);
             if (response.error) {
               switch (response.error.status) {
                 case 400:
