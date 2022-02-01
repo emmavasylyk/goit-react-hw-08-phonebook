@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
-// import { toast } from 'react-toastify';
 
 import 'modern-normalize/modern-normalize.css';
 import './App.css';
@@ -10,8 +9,6 @@ import Container from './components/Container';
 import AppBar from './components/AppBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-// import { authSelectors } from './redux/auth';
-// import { useFetchCurrentUserQuery } from './redux/auth';
 import { getIsLoggedIn } from './redux/auth/auth-selectors';
 
 const HomeView = lazy(() =>

@@ -3,8 +3,6 @@ import {
   useFetchContactsQuery,
 } from '../../redux/contacts';
 import toastError from '../../helpers/toastWarn';
-import 'react-toastify/dist/ReactToastify.css';
-// import { toast } from 'react-toastify';
 import s from './ContactForm.module.css';
 import { ImUserPlus } from 'react-icons/im';
 import { useState } from 'react';

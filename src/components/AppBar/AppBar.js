@@ -8,10 +8,8 @@ import s from './AppBar.module.css';
 
 export default function AppBar() {
   const isLoggedIn = useSelector(getIsLoggedIn);
-  // console.log('isLoggedIn', isLoggedIn);
 
   const token = useSelector(getToken);
-  // console.log('token', token);
 
   const { isLoading } = useFetchCurrentUserQuery(token, {
     skip: token === null || isLoggedIn,

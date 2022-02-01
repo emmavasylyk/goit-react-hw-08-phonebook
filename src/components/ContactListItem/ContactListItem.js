@@ -6,13 +6,10 @@ import { ImBin } from 'react-icons/im';
 import { ImPencil } from 'react-icons/im';
 import { ImSpinner3 } from 'react-icons/im';
 import { ImCheckmark } from 'react-icons/im';
-
-// ImCheckmark;
 import s from './ContactListItem.module.css';
 import { useState } from 'react';
 
 export const ContactListItem = ({ id, name, number }) => {
-  // console.log('id', id);
   const [change, setChange] = useState(false);
   const [contactName, setContactName] = useState(name);
   const [contactNumber, setContactNumber] = useState(number);

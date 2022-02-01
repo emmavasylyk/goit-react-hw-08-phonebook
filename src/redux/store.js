@@ -10,13 +10,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { contactsReducer } from './users/usersSlice';
 import { filterReducer } from './users/usersSlice';
 import { contactApi } from './contacts/contact-reduce';
 import { authApi } from './auth';
 import { authSlice } from './auth';
 import storage from 'redux-persist/lib/storage';
-// import Error from './error/ErrorMiddleware';
 
 const authPersistConfig = {
   key: 'auth',
@@ -26,7 +24,6 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    // contact: contactsReducer,
     filter: filterReducer,
     auth: persistReducer(authPersistConfig, authSlice.reducer),
     [authApi.reducerPath]: authApi.reducer,
@@ -40,7 +37,6 @@ export const store = configureStore({
     }),
     contactApi.middleware,
     authApi.middleware,
-    // Error,
   ],
 });
 export const persistor = persistStore(store);

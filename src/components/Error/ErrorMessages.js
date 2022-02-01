@@ -16,8 +16,6 @@ export const onSuccess = message => {
 };
 
 export const onWarning = message => {
-  console.log('message2', message);
-
   toast.warn(message, options);
 };
 

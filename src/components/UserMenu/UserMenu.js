@@ -5,8 +5,6 @@ import { useLogoutUserMutation } from '../../redux/auth';
 import defaultAvatar from './default-avatar.png';
 import s from './UserMenu.module.css';
 import { ImExit } from 'react-icons/im';
-// import { ImUser } from 'react-icons/im';
-// ImUser;
 
 export default function UserMenu() {
   const name = useSelector(getUserName);

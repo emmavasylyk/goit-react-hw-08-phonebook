@@ -7,7 +7,7 @@ import s from './ContactList.module.css';
 const ContactList = () => {
   const filter = useSelector(getFilter);
   const { data } = useFetchContactsQuery();
-  // console.log('contacts', contacts);
+
   const getfilteredContacts = contacts =>
     contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase()),

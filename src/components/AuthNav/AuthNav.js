@@ -6,10 +6,10 @@ export default function AuthNav() {
   return (
     <div>
       <NavLink to="/register" className={s.Link}>
-        Регистрация
+        Register
       </NavLink>
       <NavLink to="/login" className={s.Link}>
-        Логин
+        Login
       </NavLink>
     </div>
   );
