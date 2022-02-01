@@ -4,22 +4,17 @@ import {
 } from '../../redux/contacts';
 import toastError from '../../helpers/toastWarn';
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import s from './ContactForm.module.css';
 import { ImUserPlus } from 'react-icons/im';
 import { useState } from 'react';
-// import { useSelector } from 'react-redux';
-// import { getToken } from '../../redux/auth/auth-selectors';
+import { onSuccess } from '../Error/ErrorMessages';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [createContact] = useCreateContactMutation();
   const { data: contacts } = useFetchContactsQuery();
-
-  console.log('contacts', contacts);
-  // const token = useSelector(getToken);
-  // console.log('token', token);
 
   const hundleChange = e => {
     const { name, value } = e.currentTarget;
@@ -63,19 +58,8 @@ export default function ContactForm() {
       return toastError(number);
     }
 
-    // console.log('contactContent', contactContent);
-
     createContact(contactContent);
-
-    toast.success('Your contact has been successfully added!', {
-      position: 'top-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    onSuccess('Your contact has been successfully added!');
     reset();
   };
 

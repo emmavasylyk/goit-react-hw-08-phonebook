@@ -12,7 +12,7 @@ import s from './ContactListItem.module.css';
 import { useState } from 'react';
 
 export const ContactListItem = ({ id, name, number }) => {
-  console.log('id', id);
+  // console.log('id', id);
   const [change, setChange] = useState(false);
   const [contactName, setContactName] = useState(name);
   const [contactNumber, setContactNumber] = useState(number);

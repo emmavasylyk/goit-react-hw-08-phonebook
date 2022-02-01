@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const options = {
   position: 'top-right',
@@ -11,7 +12,6 @@ const options = {
 };
 
 export const onSuccess = message => {
-  console.log('message', message);
   toast.success(message, options);
 };
 
@@ -22,15 +22,5 @@ export const onWarning = message => {
 };
 
 export const onError = message => {
-  console.log('message3', message);
-
   toast.error(message, options);
 };
-
-const ErrorMessage = {
-  onSuccess,
-  onWarning,
-  onError,
-};
-
-export default ErrorMessage;
